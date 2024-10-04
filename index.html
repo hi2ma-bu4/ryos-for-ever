@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>js-Ryos for ever</title>
+
+<link rel="stylesheet" href="css/libs/introjs.min.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="css/libs/introjs-modern.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="css/commonness.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="css/main.css" media="print" onload="this.media='all'">
+
+<!-- beryl.js使用分 -->
+<script type="text/javascript" src="js/libs/berylLibs/base64urlEncoder.js" defer></script>
+<script type="text/javascript" src="js/libs/berylLibs/cheep-compressor.min.js" defer></script>
+<script type="text/javascript" src="js/libs/berylLibs/lzbase62.min.js" defer></script>
+<script type="text/javascript" src="js/libs/berylLibs/lz-string.min.js" defer></script>
+<script type="text/javascript" src="js/libs/berylLibs/deflate.min.js" defer></script>
+<script type="text/javascript" src="js/libs/berylLibs/inflate.min.js" defer></script>
+<script type="text/javascript" src="js/libs/berylLibs/url-comp.js" defer></script>
+<script type="text/javascript" src="js/libs/berylLibs/URLpercentEncoder.js" defer></script>
+<!-- zircon.js使用分 -->
+<script type="text/javascript" src="js/libs/beryl.js" defer></script>
+<!-- dataCaller.js使用分 -->
+<script type="text/javascript" src="js/libs/zircon.js" defer></script>
+<!-- editor.js使用分 -->
+<script type="text/javascript" src="js/libs/ace/ace.js" defer></script>
+<script type="text/javascript" src="js/libs/ace/ext-language_tools.js" defer></script>
+<script type="text/javascript" src="js/libs/shortcut.js" defer></script>
+<!-- window.js使用分 -->
+<script type="text/javascript" src="js/libs/jsframe.min.js" defer></script>
+<!-- main.js使用分 -->
+<script type="text/javascript" src="js/dataCaller.js" defer></script>
+<script type="text/javascript" src="js/setting.js" defer></script>
+<script type="text/javascript" src="js/editor.js" defer></script>
+<script type="text/javascript" src="js/window.js" defer></script>
+<script type="text/javascript" src="js/libs/intro.min.js" defer></script>
+<!-- ここまで -->
+<script type="text/javascript" src="js/main.js" defer></script>
+
+<!-- 自作ライブラリ
+beryl	: 文字列圧縮 + 66進数変換
+zircon	: 文字列暗号化
+
+-- 構成
+main	: 全体進行
+game	: ゲーム管理(iframe内)
+window	: それぞれのwindow管理
+editor	: ソースエディター関連
+dataCaller : データ保存関係
+setting	: 設定タブ管理
+-->
+
+</head>
+<body oncontextmenu="return false;">
+	<div id="winToolbar"></div>
+	<iframe src="game.html" id="game" frameborder="no"></iframe>
+</body>
+</html>

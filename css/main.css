@@ -1,0 +1,351 @@
+@charset "utf-8";
+
+/* 変数宣言 */
+:root {
+	/* toolbar */
+	--toolbar-color: #ddd;
+
+	--system-toolbar-height: 2em;
+	--edit-toolbar-height: 1.5em;
+
+	/* 透過度 */
+	--all-opacity: 0.9;
+	--setting-opacity: 0.8;
+
+	/* ダークモード用 */
+	--memo-background: #fafafa;
+	--memo-font: #000000;
+
+	--jsframe-titlebar-background: #fafafa;
+	--jsframe-titlebar-background-hover: #e5e5e5;
+	--jsframe-titlebar-font-def: #9b9a9b;
+	--jsframe-titlebar-font-foc: #000;
+	--jsframe-title-font-def: #9b9a9b;
+	--jsframe-title-font-foc: #4d494d;
+	--jsframe-title-shadow-font: rgba(255,255,255,0.7);
+}
+
+
+/* 設定内 組み分けタイトル */
+.setting-title{
+	padding: 0.25em 0.5em;
+	color: #494949;
+	background: transparent;
+	border-left: solid 5px #7db4e6;
+}
+
+/* toggleButton */
+label:has(> .togglebutton){
+	display: table;
+	cursor: pointer;
+	height: 31px;
+}
+.togglebutton{
+	width: 50px;
+	position: relative;
+	display: inline-block;
+}
+.togglebutton-content{
+	display: block;
+	cursor: pointer;
+	position: relative;
+	border-radius: 30px;
+	height: 31px;
+	overflow: hidden;
+}
+.togglebutton-content:before {
+	content: "";
+	display: block;
+	position: absolute;
+	width: calc(100% - 3px);
+	height: calc(100% - 3px);
+	top: 0;
+	left: 0;
+	border: 1.5px solid #E5E5EA;
+	border-radius: 30px;
+	background-color: #fff;
+}
+.togglebutton-content:after {
+	content: "";
+	display: block;
+	position: absolute;
+	background-color: transparent;
+	width: 0;
+	height: 0;
+	top: 50%;
+	left: 50%;
+	border-radius: 30px;
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	-ms-transition: all .5s;
+	-o-transition: all .5s;
+	transition: all .5s;
+}
+.togglebutton input[type=checkbox] {
+	display: none;
+}
+.togglebutton-circle {
+	display: block;
+	top: 2px;
+	left: 2px;
+	position: absolute;
+	-webkit-box-shadow: 0 2px 6px #999;
+	box-shadow: 0 2px 6px #999;
+	width: 27px;
+	height: 27px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	background-color: #fff;
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	-ms-transition: all .5s;
+	-o-transition: all .5s;
+	transition: all .5s;
+}
+.togglebutton input[type=checkbox]:checked ~ .togglebutton-circle {
+	left: 21px;
+}
+.togglebutton input[type=checkbox]:checked ~ .togglebutton-content:after {
+	background-color: #00c4cc;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.togglebutton-title{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+/* fileLoad */
+.fileloader {
+	padding: 5px 20px;
+	margin-left: 1px;
+	color: #ffffff;
+	background-color: #384878;
+	cursor: pointer;
+}
+.fileloader input[type="file"] {
+	display: none;
+}
+
+/* 設定内アコーディオン */
+.accordion-content {
+	overflow: hidden;
+	background-color: #f0f2ff;
+}
+.accordion-content-inner {
+	padding: 24px 48px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+.accordion-summary{
+	list-style: none;
+	background: rgba(255,255,255,0.3);
+}
+.accordion-summary:hover{
+	background: rgba(255,255,255,0.8);
+}
+.accordion-summary:-webkit-details-marker{
+	display: none;
+}
+
+.accordion-inner{
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 16px 24px;
+	border: 1px solid #d2beff;
+	font-weight: bold;
+	color: #002255;
+}
+
+.accordion-icon {
+	display: block;
+	position: relative;
+	width: 24px;
+	margin-left: 6px;
+	flex-shrink: 0;
+	transform-origin: center 43%;
+	transition: transform 0.4s;
+}
+.accordion-details.is-opened .accordion-icon {
+	transform: rotate(180deg);
+}
+.accordion-icon::before,
+.accordion-icon::after {
+	content: "";
+	position: absolute;
+	display: block;
+	width: 15px;
+	height: 3px;
+	background-color: #7050ff;
+}
+.accordion-icon::before {
+	left: 0;
+	transform: rotate(45deg);
+}
+.accordion-icon::after {
+	right: 0;
+	transform: rotate(-45deg);
+}
+/* 設定内 ライセンス表記pre内選択可能*/
+#setting-etc pre{
+	user-select: text;
+	cursor: text;
+	white-space: pre-wrap;
+	margin: 0;
+}
+.select{
+	user-select: text;
+	cursor: text;
+}
+
+/* window内css初期設定 */
+.winHtmlOri{
+	width: 100%;
+	height: 100%;
+	font-size: var(--init-font-size);
+}
+
+
+/* システム系 */
+#winToolbar, #editToolbar{
+	display: flex;
+	width: 100%;
+	background: var(--toolbar-color);
+	padding: 0 5px;
+}
+#winToolbar{
+	height: var(--system-toolbar-height);
+}
+#editToolbar{
+	height: var(--edit-toolbar-height);
+}
+
+/* システムアイコン系 */
+.systemIconBackground, .editIconBackground{
+	display: flex;
+	padding: 0 3px;
+	border-right: 1px solid #000;
+}
+.systemIconBackground{
+	height: var(--system-toolbar-height);
+}
+.editIconBackground{
+	height: var(--edit-toolbar-height);
+}
+
+.systemIconBackground:hover, .editIconBackground:hover{
+	background: rgba(255,255,255,0.6);
+}
+.systemIconBackground:active, .editIconBackground:active{
+	background: rgba(255,255,255,0.9);
+}
+
+.systemIcon, .editIcon{
+	width: 100%;
+	height: 100%;
+}
+.systemIconTitle, .editIconTitle{
+	height: 100%;
+	white-space: nowrap;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* メイン部分指定 */
+#game{
+	width: 100%;
+	height: calc(100% - var(--system-toolbar-height));
+}
+
+#editor{
+	width: 100%;
+	height: calc(100% - 1.3em);
+	opacity: var(--all-opacity);
+}
+#memo{
+	width: 100%;
+	height: 100%;
+	color: var(--memo-font);
+	background: var(--memo-background);
+	resize: none;
+	opacity: var(--all-opacity);
+}
+
+/* タブ処理用 */
+.setting-tabGroup{
+	display: flex;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+}
+.setting-tabPanel{
+	width: 100%;
+	height: 100%;
+}
+.setting-tab{
+	flex-grow: 1;
+	padding: 5px;
+	list-style: none;
+	border: solid 1px #ccc;
+	text-align: center;
+	cursor: pointer;
+	background: rgba(64,64,64,var(--setting-opacity));
+	color: #fff;
+}
+.setting-panelGroup{
+	height: calc(100% - 20px - 1em);
+	border: solid 1px #ccc;
+	border-top: none;
+	background: rgba(238,238,238,var(--setting-opacity));
+}
+.setting-tab.setting-tab-isActive{
+	background: rgba(255,0,0,var(--setting-opacity));
+	transition: all 0.2s ease-out;
+}
+.setting-panel{
+	display: none;
+	overflow-y: auto;
+	height: 100%;
+}
+.setting-panel.setting-panel-isShow{
+	display: block;
+}
+
+
+/* jsFrameオーバーライド */
+.jsframe-preset-style-redstone-default{
+	color: var(--jsframe-title-font-def) !important;
+}
+.jsframe-preset-style-redstone-focused{
+	color: var(--jsframe-title-font-foc) !important;
+}
+.jsframe-preset-style-redstone-default,
+.jsframe-preset-style-redstone-focused,
+div[component-id="maximizeButton"],
+div[component-id="closeButton"],
+div[component-id="restoreButton"]{
+	background: var(--jsframe-titlebar-background) !important;
+	text-shadow: var(--jsframe-title-shadow-font) !important;
+}
+div[component-id="maximizeButton"]:hover,
+div[component-id="closeButton"]:hover,
+div[component-id="restoreButton"]:hover{
+	background: var(--jsframe-titlebar-background-hover) !important;
+}
+span:has(.jsframe-preset-style-redstone-default) div[component-id="maximizeButton"],
+span:has(.jsframe-preset-style-redstone-default) div[component-id="closeButton"],
+span:has(.jsframe-preset-style-redstone-default) div[component-id="restoreButton"]{
+	color: var(--jsframe-titlebar-font-def) !important;
+}
+span:has(.jsframe-preset-style-redstone-focused) div[component-id="maximizeButton"],
+span:has(.jsframe-preset-style-redstone-focused) div[component-id="closeButton"],
+span:has(.jsframe-preset-style-redstone-focused) div[component-id="restoreButton"]{
+	color: var(--jsframe-titlebar-font-foc) !important;
+}
